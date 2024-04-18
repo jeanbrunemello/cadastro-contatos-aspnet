@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@model List<ContatoModel>
+@{
     ViewData["Title"] = "Lista de Contatos";
 }
 
@@ -23,42 +25,27 @@
             </tr>
         </thead>
         <tbody>
+
+            @if(Model != null && Model.Any())
+            {
+                foreach(ContatoModel item in Model)
+                {
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Mark@mail.com</td>
-                <td>99 999999999</td>
+                <th scope="row">@item.Id</th>
+                <td>@item.Nome</td>
+                <td>@item.Email</td>
+                <td>@item.Telefone</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a role="button" class="btn btn-light" asp-action="Editar" asp-controller="Contatos">Editar</a>
+                        <a role="button" class="btn btn-light" asp-route-id="@item.Id" asp-action="Editar" asp-controller="Contatos">Editar</a>
                         <a role="button" class="btn btn-danger" asp-action="ApagarConfirma" asp-controller="Contatos">Excluir</a>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton@mail.com</td>
-                <td>99 999999999</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a role="button" class="btn btn-light" asp-action="Editar" asp-controller="Contatos">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-action="ApagarConfirma" asp-controller="Contatos">Excluir</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Otto</td>
-                <td>Otto@mail.com</td>
-                <td>99 999999999</td>
-                <td>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a role="button" class="btn btn-light" asp-action="Editar" asp-controller="Contatos">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-action="ApagarConfirma" asp-controller="Contatos">Excluir</a>
-                    </div>
-                </td>
-            </tr>
+                    
+                }
+            }
+
 
         </tbody>
     </table>
