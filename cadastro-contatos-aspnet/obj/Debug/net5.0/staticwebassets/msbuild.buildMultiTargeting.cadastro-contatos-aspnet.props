@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\cadastro-contatos-aspnet.props" />
+</Project>
