@@ -1,14 +1,16 @@
-﻿@{
+﻿@model ContatoModel;
+
+@{
     ViewData["Title"] = "Confirmação de Exclusão";
 }
 
 <div class="text-center">
 
     <h3 class="display-4">ATENÇÃO</h3>
-    <p>Deseja apagar o contato {XXXXX}?</p>
+    <p>Deseja apagar o contato @Model.Nome ?</p>
 
 <div class="btn-group" role="group" aria-label="Basic example">
-        <a role="button" class="btn btn-danger" asp-controller="Contatos" asp-action="Apagar">Excluir</a>
+        <a role="button" class="btn btn-danger" asp-controller="Contatos" asp-action="Apagar" asp-route-id="@Model.Id">Excluir</a>
         <a role="button" class="btn btn-secondary" asp-controller="Contatos" asp-action="Index">voltar</a>
 </div>
 </div>

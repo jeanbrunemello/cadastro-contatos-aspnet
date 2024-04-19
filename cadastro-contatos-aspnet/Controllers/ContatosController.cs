@@ -27,26 +27,42 @@ namespace cadastro_contatos_aspnet.Controllers
             return View();
         }
 
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
-            return View();
+            ContatoModel contatoPorId = _contatoRepositorio.ListarPorId(id);
+            return View(contatoPorId);
         }
 
-        public IActionResult ApagarConfirma()
+        public IActionResult ApagarConfirma(int id)
         {
-            return View();
+
+            ContatoModel contatoPorId = _contatoRepositorio.ListarPorId(id);
+            return View(contatoPorId);
         }
 
-        public IActionResult ApagarContato()
-        {
-            return View();
-        }
+        //public IActionResult Apagar()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public IActionResult Criar(ContatoModel contato)
         {
             _contatoRepositorio.Adicionar(contato);
-            return RedirectToAction("Index", "ContatosController");
+            return RedirectToAction("Index", "Contatos");
+        }
+
+        [HttpPost]
+        public IActionResult Editar(ContatoModel contato)
+        {
+            _contatoRepositorio.Editar(contato);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Apagar(int id)
+        {
+            _contatoRepositorio.Apagar(id);
+            return RedirectToAction("Index");
         }
     }
 }

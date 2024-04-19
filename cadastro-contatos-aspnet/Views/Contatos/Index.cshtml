@@ -38,7 +38,7 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a role="button" class="btn btn-light" asp-route-id="@item.Id" asp-action="Editar" asp-controller="Contatos">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-action="ApagarConfirma" asp-controller="Contatos">Excluir</a>
+                                <a role="button" class="btn btn-danger" asp-action="ApagarConfirma" asp-controller="Contatos" asp-route-id="@item.Id">Excluir</a>
                     </div>
                 </td>
             </tr>
